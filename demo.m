@@ -40,11 +40,11 @@ legend([hbar, hair, hbnd], 'Busbar', 'Air', 'Dirichlet boundary');
 
 
 %assembling matrices
-shape_function = ShapeFunction();
-shape_function.mesh = msh;
-S = assemble_stiffness_matrix(msh, reluctivity, shape_function);
+shape_function_object = ShapeFunction();
+shape_function_object.mesh = msh;
+S = assemble_stiffness_matrix(msh, reluctivity, shape_function_object);
 S = sparse(S); %for faster solution of the linear problem
-F = assemble_load_vector(msh, current_density, shape_function);
+F = assemble_load_vector(msh, current_density, shape_function_object);
 
 %solving free variables
 free_nodes = setdiff(1:number_of_nodes, dirichlet_nodes);

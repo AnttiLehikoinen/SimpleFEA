@@ -41,7 +41,7 @@ for kpot = 1:N
 
         %calculating mapping from reference element to global element
         %[B,b] = get_ElementwiseMapping(msh, elem);
-        B = msh.get_mapping_matrix_for_element(elem);
+        B = msh.get_mapping_Jacobian_for_element(elem);
         b = msh.nodes(:, msh.elements(1,elem));
         
         %calculating and plotting global equipotential lines

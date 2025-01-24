@@ -4,7 +4,7 @@ classdef ShapeFunction < handle
     end
     methods
         function dN = get_global_gradient_value(this, node_index, element_index, x_quad_local)
-            J = this.mesh.get_mapping_matrix_for_element(element_index);
+            J = this.mesh.get_mapping_Jacobian_for_element(element_index);
 
             dN_reference = this.get_reference_gradient_value(node_index, x_quad_local);
             dN = J' \ dN_reference;

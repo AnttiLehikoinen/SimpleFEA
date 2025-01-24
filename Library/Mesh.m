@@ -4,7 +4,7 @@ classdef Mesh < handle
         elements
     end
     methods
-        function F = get_mapping_matrix_for_element(this, element_index)
+        function F = get_mapping_Jacobian_for_element(this, element_index)
             F = zeros(2,2);
             F(:,1) = this.nodes(:, this.elements(2, element_index)) - ...
                 this.nodes(:, this.elements(1, element_index));
