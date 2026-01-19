@@ -13,14 +13,23 @@ for k_element = 1:number_of_elements
     for k_test = 1:3
         for k_shape = 1:3
             for k_quadrature = 1:number_of_quadrature_points
+                %gradient of Ni as per lecture notes
                 test_function_gradient_value = ...
                     shape_function_object.get_global_gradient_value(...
                     k_test, k_element, quadrature_points(:, k_quadrature));
+                
+                %gradient of Nj as per lecture notes
                 shape_function_gradient_value = ...
                     shape_function_object.get_global_gradient_value(...
                     k_shape, k_element, quadrature_points(:, k_quadrature));
+                
+                %determinant of the Jacobian matrix of the mapping
+                % from the reference into the global element k_element
                 mapping_determinant = det(msh.get_mapping_Jacobian_for_element(k_element));
 
+                %indices (row, column) into the stiffness matrix
+                % as per lecture nodes, 'row' corresponds to i, and
+                % 'column' corresponds to i
                 row = msh.elements(k_test, k_element);
                 column = msh.elements(k_shape, k_element);
 
