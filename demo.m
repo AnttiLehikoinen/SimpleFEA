@@ -56,7 +56,11 @@ A(free_nodes) = A_free;
 
 %plotting solution
 figure(2); clf; hold on; box on;
+triplot(msh.elements', msh.nodes(1,:), msh.nodes(2,:), 'k');
 trimesh(msh.elements', msh.nodes(1,:), msh.nodes(2,:), A);
+xlabel('x');
+ylabel('y');
+zlabel('|A|');
 
 %plotting flux lines and flux density
 figure(3); clf; hold on; box on; axis equal tight;
